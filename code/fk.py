@@ -21,6 +21,30 @@ def fk(angles, link_lengths):
         np.float64
     """
     # FILL in your code here
+    Tab = np.array([
+                 	[np.cos(angles[0]), (-1)*np.sin(angles[0]), 0, link_lengths[0]* np.cos(angles[0]) ], 
+				    [np.sin(angles[0]),  np.cos(angles[0]), 0, link_lengths[0]* np.sin(angles[0])],
+			        [0, 0, 1, 0],
+			        [0, 0, 0, 1]])
+
+    Tbc = np.array([
+    				[np.cos(angles[1]), (-1)*np.sin(angles[1]), 0, link_lengths[1]* np.cos(angles[1]) ], 
+				    [np.sin(angles[1]),  np.cos(angles[1]), 0, link_lengths[1]* np.sin(angles[1])],
+			        [0, 0, 1, 0],
+			        [0, 0, 0, 1]])
+
+
+    Tcd = np.array([
+    				[np.cos(angles[2]), (-1)*np.sin(angles[2]), 0, link_lengths[2]* np.cos(angles[2]) ], 
+				    [np.sin(angles[2]),  np.cos(angles[2]), 0, link_lengths[2]* np.sin(angles[2])],
+			        [0, 0, 1, 0],
+			        [0, 0, 0, 1]])
+
+    Tad=np.dot(Tab, np.dot(Tbc,Tcd))
+
+    return np.array([Tad[0][3], Tad[1][3]])
+
+
 
 if __name__ == '__main__':
     np.set_printoptions(suppress=True)

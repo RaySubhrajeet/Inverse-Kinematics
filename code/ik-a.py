@@ -76,11 +76,11 @@ def plot_solution(x):
     ax.scatter(p_d[0], p_d[1], p_d[2], color='g', s=100)
 
     # plot robot
-    points1 = fk(x[0], link_lengths)
+    points1 = fk(x[:1], link_lengths[:1])
     plt.plot([0, points1[0]], [0, points1[1]], [0, points1[2]], color='k')
     for pp in range(1, len(x)):
-       points0 = fk(x[0:pp], link_lengths)
-       points1 = fk(x[0:pp+1], link_lengths)
+       points0 = fk(x[:pp], link_lengths[:pp])
+       points1 = fk(x[:pp+1], link_lengths[:pp+1])
        plt.plot([points0[0], points1[0]],
                 [points0[1], points1[1]],
                 [points0[2], points1[2]],

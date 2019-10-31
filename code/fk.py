@@ -42,7 +42,7 @@ def fk(angles, link_lengths):
 
     Tad=np.dot(Tab, np.dot(Tbc,Tcd))
 
-    return np.array([Tad[0][3], Tad[1][3]])
+    return np.array([Tad[0][3], Tad[1][3], 0])
 
 
 

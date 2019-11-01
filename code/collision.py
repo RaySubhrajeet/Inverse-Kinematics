@@ -19,7 +19,10 @@ def line_sphere_intersection(p1, p2, c, r):
 	val=np.sqrt(np.sum([(p2 - p1)**2
 						   for p1, p2 in zip(p1,p2)]))
 
-	unit_vector=[linvec/val for linevec in line_vector]
+	if val==0:
+		unit_vector=np.array([0,0,0])
+	else:
+		unit_vector=[linevec/val for linevec in line_vector]
 	vecO_C=np.subtract(p1,c)
 		
 	res=np.dot(unit_vector,vecO_C)* np.dot(unit_vector,vecO_C) - np.dot(vecO_C, vecO_C) - r*r

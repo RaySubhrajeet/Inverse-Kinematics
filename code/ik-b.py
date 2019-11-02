@@ -55,8 +55,6 @@ def constraint1(x):
 	:returns: constraint output as a scalar value of type np.float64
 	"""
 	# FILL in your code here
-	obstacle_center = np.array([0.6, 0.5, 0])
-	obstacle_radius = 0.2
 	initpos=np.array([0,0,0])
 	link1pos=np.array([np.cos(x[0]),np.sin(x[0]),0])
 	val= line_sphere_intersection(initpos,link1pos,obstacle_center,obstacle_radius)
@@ -74,8 +72,6 @@ def constraint2(x):
 	:returns: constraint output as a scalar value of type np.float64
 	"""
 	# FILL in your code here
-	obstacle_center = np.array([0.6, 0.5, 0])
-	obstacle_radius = 0.2
 	link2pos=np.array([np.cos(x[0] +x[1]),np.sin(x[0]+ x[1]),0])
 	initpos=np.array([np.cos(x[0]),np.sin(x[0]),0])
 	val= line_sphere_intersection(initpos,link2pos,obstacle_center,obstacle_radius)
@@ -93,8 +89,6 @@ def constraint3(x):
 	:returns: constraint output as a scalar value of type np.float64
 	"""
 	# FILL in your code here
-	obstacle_center = np.array([0.6, 0.5, 0])
-	obstacle_radius = 0.2
 	initpos=np.array([np.cos(x[0] +x[1]),np.sin(x[0]+ x[1]),0])
 	link3pos=np.array([np.cos(x[0] +x[1]+x[2]),np.sin(x[0] +x[1]+x[2]),0])
 	val= line_sphere_intersection(initpos,link3pos,obstacle_center,obstacle_radius)
@@ -131,7 +125,9 @@ def solve_ik_with_cons(obj, q0, bnds, cons):
 	print('x1 = ' + str(x[0]))
 	print('x2 = ' + str(x[1]))
 	print('x3 = ' + str(x[2]))
-
+	print('constraint 1:', cons[0]['fun'](x))
+	print('constraint 2:', cons[1]['fun'](x))
+	print('constraint 3:', cons[2]['fun'](x))
 	return x
 
 def plot_solution(x):

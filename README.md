@@ -1,3 +1,2 @@
-# Homework 3
+Check Requirement.txt for all the beeded packages
 
-See Piazza for assignment instructions.
